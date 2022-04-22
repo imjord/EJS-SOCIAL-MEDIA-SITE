@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 
 
 const PostSchema = new Schema({
@@ -13,7 +13,15 @@ const PostSchema = new Schema({
     post: {
         type: String, 
         required: true
-    }
+    }, 
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+    }]
 })
 
 

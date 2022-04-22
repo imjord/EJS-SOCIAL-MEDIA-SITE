@@ -39,8 +39,13 @@ const PostController = {
         Post.findByIdAndDelete(id).then(results => {
             res.json({ redirect: '/api/posts' });
         })
+    },
+
+    testPosts(req,res){
+        Post.find().then(results => res.json(results));
     }
 
+    
 
 }
 
