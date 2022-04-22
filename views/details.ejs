@@ -1,0 +1,20 @@
+<%- include('./partials/head.ejs')  %> 
+
+<h2><%= info.username  %> </h2>
+<h2><%= info.title %> </h2>
+<h2><%= info.post %> </h2>
+<a class="delete" data-doc="<%= info._id %>">Delete</a>
+
+<script>
+
+var deleteEl = document.querySelector('a.delete');
+
+deleteEl.addEventListener('click', (e) => {
+    const endpoint = `/api/posts/${deleteEl.dataset.doc}`;
+
+    fetch(endpoint, {
+        method: 'DELETE',
+    }).then(response => response.json()).then(data => window.location.href = data.redirect)
+})
+
+</script>
