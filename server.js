@@ -22,12 +22,12 @@ app.get('/', (req,res) => {
 
 
 
-
+//gserg
 
 db.once('open', () =>{
     console.log(`db running on mongodb`)
     app.listen(PORT, () => {
-        console.log(`server open on ${PORT}`);
+        console.log(`server open on on ${PORT}`);
     })
 })
 
