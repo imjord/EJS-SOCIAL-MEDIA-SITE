@@ -28,9 +28,13 @@ const PostController = {
     // SEE POST 
     postDetails(req,res){
         const id = req.params.id;
-        Post.findById(id).then(results => {
+        Post.findOne({_id: id}).populate({
+            path: 'comments',
+            
+          }).then(results => {
             res.render('details', {title: 'Post Details', info: results})
-        })
+        }) 
+      
         
     },
 

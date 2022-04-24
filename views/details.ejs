@@ -1,9 +1,30 @@
 <%- include('./partials/head.ejs')  %> 
 
-<h2><%= info.username  %> </h2>
-<h2><%= info.title %> </h2>
-<h2><%= info.post %> </h2>
-<h2><%= info.createdAt %> </h2>
+<div>
+    <h4><%= info.username  %> </h4>
+    <h4><%= info.title %> </h4>
+    <h4><%= info.post %> </h4>
+    <h4><%= info.createdAt %> </h4>
+</div>
+
+
+
+<div>
+    <h3>Comments</h3>
+    
+    <% if(info.comments.length > 0) { %> 
+        <p><% info.comments.forEach(commentArray => { %> 
+           Written By <%= commentArray.writtenBy  %> 
+        </p>
+        <p>
+            Reply <%= commentArray.commentBody  %> 
+         </p>
+         
+          <% }) %> 
+        <% } else { %> 
+            <p>This post has no comments</p>
+            <% } %> 
+</div>
 <a class="delete" data-doc="<%= info._id %>">Delete</a>
 
 <script>

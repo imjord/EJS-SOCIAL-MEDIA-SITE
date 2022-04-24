@@ -15,7 +15,7 @@ const CommentController = {
         Comment.create(body)
         .then(({ _id }) => {
           return Post.findOneAndUpdate(
-            { _id: params.PostId },
+            { _id: params.id },
             { $push: { comments: _id } },
             { new: true }
           );
@@ -32,13 +32,13 @@ const CommentController = {
 },
 addReply({ params, body }, res) {
     Comment.findOneAndUpdate(
-      { _id: params.commentId },
+      { _id: params.id },
       { $push: { replies: body } },
       { new: true, runValidators: true }
     )
       .then(dbPostData => {
         if (!dbPostData) {
-          res.status(404).json({ message: 'No pizza found with this id!' });
+          res.status(404).json({ message: 'No post found with this id!' });
           return;
         }
         res.json(dbPostData);
