@@ -25,3 +25,34 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     color: black;
     list-style: none;
 }
+
+.comments-section{
+    border: 2px solid black;
+    margin: 20px 5px;
+    padding: 2px 5px;
+    background-color: rgba(120, 223, 255, 0.675);
+    border-radius: 2px;
+
+}
+
+#fl {
+    display: flex;
+    
+}
+
+#fl h4 {
+    font-size: 15px;
+}
+
+#fl h5 {
+    margin-left: 20px;
+    font-size: 15px;
+}
+
+
+
+#hehe {
+    border: 1px solid black;
+    margin-top: 10px;
+  
+}

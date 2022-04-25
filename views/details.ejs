@@ -9,7 +9,7 @@
 
 
 
-<div>
+<div class="comments-section">
     <h3>Comments</h3>
     <form action="/api/comments/<%= info.id %>" method="POST">
         <label for="writtenBy">Written by:</label>
@@ -18,21 +18,32 @@
     <input type="text" id="commentBody" name="commentBody">
     <button>Submit</button>
     </form>
-    
-    <% if(info.comments.length > 0) { %> 
-        <p><% info.comments.forEach(commentArray => { %> 
-           Written By: <%= commentArray.writtenBy  %> 
-        </p>
-        <p>
-            Comment: <%= commentArray.commentBody  %> 
-         </p>
-         
-          <% }) %> 
-        <% } else { %> 
-            <p>This post has no comments</p>
-            <% } %> 
+    <div id="fl">
+        <h4>Comments on Post</h4><h5><%= info.comments.length  %>  </h5>
+    </div>
+    <div id="comments">
+        <% if(info.comments.length > 0) { %> 
+            <div id="comment-singles">
+                
+           
+           <% info.comments.forEach(commentArray => { %> 
+           <div id="hehe">
+            <p> Written By: <%= commentArray.writtenBy  %> 
+            </p>
+            <p>
+                Comment: <%= commentArray.commentBody  %> 
+             </p>
+            
+              <% }) %> 
+           </div> 
+            </div>
+            <% } else { %> 
+                <p>This post has no comments</p>
+                <% } %> 
+    </div>
+   
 </div>
-<a class="delete" data-doc="<%= info._id %>">Delete</a>
+<a class="delete" data-doc="<%= info._id %>">Delete Post (w.i.p for user to be able to delete)</a>
 
 <script>
 
