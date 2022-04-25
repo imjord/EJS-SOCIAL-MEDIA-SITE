@@ -26,7 +26,9 @@ const CommentController = {
             res.status(404).json({ message: 'No Post found with this id!' });
             return;
           }
-          res.json(dbPostData);
+          // res.json(dbPostData);
+          res.render('home', {title: 'home'});
+       
         })
         .catch(err => res.json(err));
 },

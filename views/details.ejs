@@ -11,13 +11,20 @@
 
 <div>
     <h3>Comments</h3>
+    <form action="/api/comments/<%= info.id %>" method="POST">
+        <label for="writtenBy">Written by:</label>
+    <input type="text" id="writtenBy" name="writtenBy">
+    <label for="commentBody">Comment:</label>
+    <input type="text" id="commentBody" name="commentBody">
+    <button>Submit</button>
+    </form>
     
     <% if(info.comments.length > 0) { %> 
         <p><% info.comments.forEach(commentArray => { %> 
-           Written By <%= commentArray.writtenBy  %> 
+           Written By: <%= commentArray.writtenBy  %> 
         </p>
         <p>
-            Reply <%= commentArray.commentBody  %> 
+            Comment: <%= commentArray.commentBody  %> 
          </p>
          
           <% }) %> 
@@ -38,5 +45,9 @@ deleteEl.addEventListener('click', (e) => {
         method: 'DELETE',
     }).then(response => response.json()).then(data => window.location.href = data.redirect)
 })
+
+function handleSubmit(e) {
+    e.preventDefault();
+}
 
 </script>
