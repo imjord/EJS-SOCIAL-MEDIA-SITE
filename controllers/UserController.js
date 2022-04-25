@@ -12,16 +12,24 @@ const UserController = {
 
     // create a user 
     createUser(req,res){
-        const newUser = new User({
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password
+        User.findOne({email: req.body.email}).then(user => {
+            if(user){
+                return res.status(400).json({email: "A user is already registered with that email"})
+            } else {
+                const newUser = new User({
+                    username: req.body.username,
+                    email: req.body.email,
+                    password: req.body.password
+                })
+                newUser.save().then(results => {
+                   return res.json({message: "User Created Sucessfully", results});
+                })
+            }
         })
+        
 
 
-        newUser.save().then(results => {
-            res.json({message: "User Created Sucessfully", results});
-        })
+           
     },
 
     deleteUser(req,res){
