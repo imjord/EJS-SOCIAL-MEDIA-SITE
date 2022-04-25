@@ -1,5 +1,7 @@
 <%- include('./partials/head.ejs')  %> 
-
+    <% if(data.length <= 0) { %> 
+        <p> There are currently no posts. Go create one!</p>
+        <% } %> 
     <% data.forEach(items => { %>
         <ul id="post-ul">
             <a class="single" href="posts/<%= items._id %> "> Details </a>
