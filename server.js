@@ -6,7 +6,7 @@ const routes = require('./routes');
 require('dotenv').config()
 
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: true}));
 
 app.use(routes);
 
@@ -18,7 +18,7 @@ app.use(express.static('./public'));
 // see home view 
 
 app.get('/', (req,res) => {
-    res.render('home', {title: 'homepage'})
+    res.render('landingPage', {title: ''})
 })
 
 
