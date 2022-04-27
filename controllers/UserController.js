@@ -22,7 +22,7 @@ const UserController = {
                     password: req.body.password
                 })
                 newUser.save().then(results => {
-                   return res.json({message: "User Created Sucessfully", results});
+                   return res.render('home', {title: "homepage", results})
                 })
             }
         })
