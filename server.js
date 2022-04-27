@@ -16,6 +16,9 @@ app.set('view engine', 'ejs');
 app.use(express.static('./public'));
 
 // see home view 
+app.get('/homepage', (req,res) => {
+    res.render('home', {title: 'Homepage'})
+})
 
 app.get('/', (req,res) => {
     res.render('landingPage', {title: ''})
