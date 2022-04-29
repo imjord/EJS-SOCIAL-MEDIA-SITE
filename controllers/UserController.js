@@ -33,7 +33,7 @@ const UserController = {
                         newUser.password = hash;
                         newUser.save().then(results => {
                 
-                            res.render('home', {title: "homepage", user: req.user})
+                            res.redirect('/login')
                          })
                     })
                 })
