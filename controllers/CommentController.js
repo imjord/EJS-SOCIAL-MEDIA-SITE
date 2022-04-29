@@ -11,7 +11,7 @@ const CommentController = {
     },
 
     // add a comment to post
-    createComment({params, body}, res){
+    createComment({params, body}, res,req){
         Comment.create(body)
         .then(({ _id }) => {
           return Post.findOneAndUpdate(
@@ -27,10 +27,10 @@ const CommentController = {
             return;
           }
           // res.json(dbPostData);
-          res.render('home', {title: 'home', user: req.user});
+          res.redirect('/api/posts');
        
         })
-        .catch(err => res.json(err));
+        .catch(err => (console.log(err)));
 },
 addReply({ params, body }, res) {
     Comment.findOneAndUpdate(
