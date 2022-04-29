@@ -4,4 +4,19 @@
 <h3>OurFriends Social Media Site</h3>
 
 <h4>Create posts and comment.</h4>
+<!-- example.ejs --> 
+
+<!-- check for user on page load --> 
+<% if (typeof token != "undefined") { %>
+    <!-- make token available to script tag -->
+    <% var token = token %>
+  
+    <!-- use script tag to access ejs data and local storage -->
+    <script>
+      let token =  JSON.stringify(token);
+      localStorage.setItem('info', JSON.stringify({'token': token}));
+    </script>
+  <% } %>
+
 <%- include('./partials/footer.ejs')%> 
+

@@ -1,6 +1,9 @@
 const User = require('../models/User');
 
 
+require('dotenv').config()
+
+
 const UserController = { 
 
 
@@ -21,8 +24,10 @@ const UserController = {
                     email: req.body.email,
                     password: req.body.password
                 })
+              
                 newUser.save().then(results => {
-                   return res.render('home', {title: "homepage", results})
+                
+                   res.render('home', {title: "homepage", results, token:token})
                 })
             }
         })
@@ -30,6 +35,32 @@ const UserController = {
 
 
            
+    },
+        // login handler
+    async loginUser(req,res){
+        try{
+        const {username, email, password} = req.body;
+
+        // validate user input 
+        if(!(username && email && password)){
+            res.status(400).send('all input is required')
+        }
+        // validatre user in db
+        const user = await User.findOne({email})
+        const correctPass = await user.isCorrectPassword(password)
+        if(user && correctPass){
+            // Create token
+            
+
+      // user
+      res.status(200).json(user);
+    
+    }
+        res.status(400).send("Invalid Credentials");
+    } catch (err) {
+    console.log(err);
+  }
+        
     },
 
     deleteUser(req,res){
