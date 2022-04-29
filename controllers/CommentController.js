@@ -27,7 +27,7 @@ const CommentController = {
             return;
           }
           // res.json(dbPostData);
-          res.render('home', {title: 'home'});
+          res.render('home', {title: 'home', user: req.user});
        
         })
         .catch(err => res.json(err));

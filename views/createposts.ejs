@@ -1,7 +1,7 @@
 <%- include('./partials/head.ejs')  %> 
 <form action="/api/posts" method="POST">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username">
+    <label for="username">Username: </label>
+    <%= user.username  %>
     <label for="title">title</label>
     <input type="text" id="title" name="title">
     <label for="post">post</label>

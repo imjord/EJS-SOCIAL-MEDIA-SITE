@@ -6,20 +6,20 @@ const PostController = {
 
     getPosts(req,res){
         Post.find().then(result => {
-            res.render('posts', {title: 'posts', data: result})
+            res.render('posts', {title: 'posts', data: result, user: req.user})
         })
         
     },
 
     createPosts(req,res){
         const newPost = new Post({
-            username: req.body.username,
+            username: req.user.username,
             title: req.body.title,
             post: req.body.post
         })
 
         newPost.save().then(result => {
-            res.render('home', {title: 'home'});
+            res.render('home', {title: 'home', user: req.user});
         }
             )
 
@@ -32,7 +32,7 @@ const PostController = {
             path: 'comments',
             
           }).then(results => {
-            res.render('details', {title: 'Post Details', info: results})
+            res.render('details', {title: 'Post Details', info: results, user: req.user})
         }) 
       
         
