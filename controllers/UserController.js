@@ -3,7 +3,7 @@ const User = require('../models/User');
 
 require('dotenv').config()
 const passport = require('passport');
-const bcrypt = require('bcrypt')
+// const bcrypt = require('bcrypt')
 
 
 const UserController = { 
@@ -27,16 +27,16 @@ const UserController = {
                     password: req.body.password
                 })
               
-                bcrypt.genSalt(10, (err,salt) => {
-                    bcrypt.hash(newUser.password, salt, (err, hash) => {
-                        if(err) throw err;
-                        newUser.password = hash;
+                // bcrypt.genSalt(10, (err,salt) => {
+                //     bcrypt.hash(newUser.password, salt, (err, hash) => {
+                //         if(err) throw err;
+                //         newUser.password = hash;
                         newUser.save().then(results => {
                 
                             res.redirect('/login')
                          })
-                    })
-                })
+                //     })
+                // })
 
                 
             }
