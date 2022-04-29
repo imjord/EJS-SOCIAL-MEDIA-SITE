@@ -2,6 +2,7 @@ const User = require('../models/User');
 
 
 require('dotenv').config()
+const passport = require('passport');
 
 
 const UserController = { 
@@ -27,7 +28,7 @@ const UserController = {
               
                 newUser.save().then(results => {
                 
-                   res.render('home', {title: "homepage", results, token:token})
+                   res.render('home', {title: "homepage", user: req.user})
                 })
             }
         })
@@ -37,7 +38,7 @@ const UserController = {
            
     },
         // login handler
-    async loginUser(req,res){
+    async loginUser(req,res, next){
         try{
         const {username, email, password} = req.body;
 
@@ -49,19 +50,32 @@ const UserController = {
         const user = await User.findOne({email})
         const correctPass = await user.isCorrectPassword(password)
         if(user && correctPass){
-            // Create token
+        
+            passport.authenticate('local', {
+                successRedirect: '/homepage',
+                failureRedirect: '/login',
+                'session': true
+                // failureFlash: true
+              })(req, res, next);
             
-
-      // user
-      res.status(200).json(user);
     
     }
         res.status(400).send("Invalid Credentials");
     } catch (err) {
     console.log(err);
   }
+
+
         
     },
+
+      // logout users
+
+  logout(req,res){
+    req.logout();
+    res.redirect('/login')
+    
+},
 
     deleteUser(req,res){
         User.findByIdAndDelete({_id: req.params.id}).then(results => res.json({message: "User sucessfully deleted", results}))
