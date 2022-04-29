@@ -26,10 +26,18 @@ const UserController = {
                     password: req.body.password
                 })
               
-                newUser.save().then(results => {
+                bcrypt.genSalt(10, (err,salt) => {
+                    bcrypt.hash(newUser.password, salt, (err, hash) => {
+                        if(err) throw err;
+                        newUser.password = hash;
+                        newUser.save().then(results => {
                 
-                   res.render('home', {title: "homepage", user: req.user})
+                            res.render('home', {title: "homepage", user: req.user})
+                         })
+                    })
                 })
+
+                
             }
         })
         
@@ -38,34 +46,12 @@ const UserController = {
            
     },
         // login handler
-    async loginUser(req,res, next){
-        try{
-        const {username, email, password} = req.body;
-
-        // validate user input 
-        if(!(username && email && password)){
-            res.status(400).send('all input is required')
-        }
-        // validatre user in db
-        const user = await User.findOne({email})
-        const correctPass = await user.isCorrectPassword(password)
-        if(user && correctPass){
-        
-            passport.authenticate('local', {
-                successRedirect: '/homepage',
-                failureRedirect: '/login',
-                'session': true
-                // failureFlash: true
-              })(req, res, next);
-            
-    
-    }
-        res.status(400).send("Invalid Credentials");
-    } catch (err) {
-    console.log(err);
-  }
-
-
+      loginUser(req,res, next){
+        passport.authenticate('local', {
+            successRedirect: '/homepage',
+            failureRedirect: '/login',
+            failureFlash: true
+          })(req, res, next);
         
     },
 
