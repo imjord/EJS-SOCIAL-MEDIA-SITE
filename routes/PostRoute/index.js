@@ -11,7 +11,7 @@ router.get('/posts', getPosts);
 router.post('/posts', createPosts);
 
 router.get('/createposts', (req,res) => {
-    res.render('createposts', {title: 'Create Post'});
+    res.render('createposts', {title: 'Create Post', user: req.user});
 });
 
 router.get('/posts/:id', postDetails);
