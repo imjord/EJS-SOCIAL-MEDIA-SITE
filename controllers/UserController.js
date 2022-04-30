@@ -38,8 +38,19 @@ const UserController = {
               password,
             });
 
-        } else {
-            User.findOne({email: req.body.email}).then(user => {
+            } else { 
+            User.findOne({username: req.body.username}).then(user => {
+                if(user){
+                    errors.push({ msg: 'username already exists' });
+                    res.render('register', {
+                        errors,
+                        username,
+                        email,
+                        password,
+                      });
+                    
+                } else { 
+                    User.findOne({email: req.body.email}).then(user => {
                 if(user){
                     errors.push({ msg: 'Email already exists' });
                     res.render('register', {
@@ -48,7 +59,7 @@ const UserController = {
                         email,
                         password,
                       });
-
+                    
                 } else {
                     const newUser = new User({
                         username: req.body.username,
@@ -67,16 +78,12 @@ const UserController = {
          
                 }
             })
+                }
+
+                })
+
         }
-
-
-
-
-       
         
-
-
-           
     },
         // login handler
       loginUser(req,res, next){
