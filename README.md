@@ -30,9 +30,7 @@
 
   #### Repo Info: still W.I.P
 
-  #### Badge: 
 
-  ![badge](https://img.shields.io/static/v1?label=License&message=&color=blue)
 
 
 
