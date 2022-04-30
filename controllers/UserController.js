@@ -17,30 +17,62 @@ const UserController = {
 
     // create a user 
     createUser(req,res){
-        User.findOne({email: req.body.email}).then(user => {
-            if(user){
-                return res.status(400).json({email: "A user is already registered with that email"})
-            } else {
-                const newUser = new User({
-                    username: req.body.username,
-                    email: req.body.email,
-                    password: req.body.password
-                })
-              
-                // bcrypt.genSalt(10, (err,salt) => {
-                //     bcrypt.hash(newUser.password, salt, (err, hash) => {
-                //         if(err) throw err;
-                //         newUser.password = hash;
-                        newUser.save().then(results => {
-                
-                            res.redirect('/login')
-                         })
-                //     })
-                // })
+        const {username, email, password} = req.body;
+        let errors = [];
 
+        if (!username || !email || !password) {
+            errors.push({ msg: 'Please enter all fields' });
+          }
+        
+          
+        
+          if (password.length < 6) {
+            errors.push({ msg: 'Password must be at least 6 characters' });
+          }
+        
+          if (errors.length > 0) {
+            res.render('register', {
+              errors,
+              username,
+              email,
+              password,
+            });
+
+        } else {
+            User.findOne({email: req.body.email}).then(user => {
+                if(user){
+                    errors.push({ msg: 'Email already exists' });
+                    res.render('register', {
+                        errors,
+                        username,
+                        email,
+                        password,
+                      });
+
+                } else {
+                    const newUser = new User({
+                        username: req.body.username,
+                        email: req.body.email,
+                        password: req.body.password
+                    })
+                  
                 
-            }
-        })
+                            newUser.save().then(results => {
+                                req.flash(
+                                    'success_msg',
+                                    'You are now registered and can log in'
+                                  );
+                                res.redirect('/login')
+                             })
+         
+                }
+            })
+        }
+
+
+
+
+       
         
 
 
@@ -60,6 +92,7 @@ const UserController = {
 
   logout(req,res){
     req.logout();
+    req.flash('success_msg', 'You are logged out');
     res.redirect('/login')
     
 },
