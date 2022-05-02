@@ -19,7 +19,11 @@ const PostController = {
         })
 
         newPost.save().then(result => {
-            res.render('home', {title: 'home', user: req.user});
+            req.flash(
+                'success_msg',
+                'Post Successfully posted'
+              );
+            res.redirect('/api/createposts');
         }
             )
 

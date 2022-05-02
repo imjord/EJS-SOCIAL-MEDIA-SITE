@@ -48,7 +48,7 @@ app.use(function(req, res, next) {
   });
 
 
-  app.use(routes);
+app.use(routes);
 // see home view 
 app.get('/homepage', ensureAuthenticated, (req,res) => {
     res.render('home', {title: 'Homepage', user: req.user})

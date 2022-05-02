@@ -26,7 +26,10 @@ const CommentController = {
             res.status(404).json({ message: 'No Post found with this id!' });
             return;
           }
-          // res.json(dbPostData);
+          // req.flash(
+          //   'success_msg',
+          //   'Comment Successfully posted'
+          // );
           res.redirect('/api/posts');
        
         })
