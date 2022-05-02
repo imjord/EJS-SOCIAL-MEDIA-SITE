@@ -4,7 +4,7 @@ const router = require('express').Router();
 
 
 
-router.get('/test', testPosts);
+
 
 router.get('/posts', getPosts);
 

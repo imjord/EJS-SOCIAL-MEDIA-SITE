@@ -58,7 +58,9 @@ app.get('/', (req,res) => {
     res.render('landingPage', {title: ''})
 })
 
-
+app.use((req,res) => {
+    res.status(404).end();
+})
 
 //gserg
 

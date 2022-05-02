@@ -45,9 +45,7 @@ const PostController = {
         })
     },
 
-    testPosts(req,res){
-        Post.find().then(results => res.json(results));
-    }
+    
 
     
 
