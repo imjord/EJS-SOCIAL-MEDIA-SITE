@@ -6,9 +6,10 @@ const routes = require('./routes');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
+const {ensureAuthenticated} = require('./config/auth')
 require('dotenv').config()
 // passport config 
-
+require('./config/passport')(passport);
 
 // view engine 
 app.set('view engine', 'ejs');
@@ -36,7 +37,7 @@ app.use(passport.session());
 // connect flash
 app.use(flash());
 
-require('./config/passport')(passport);
+
 
 // Global flash variables
 app.use(function(req, res, next) {
@@ -49,7 +50,7 @@ app.use(function(req, res, next) {
 
   app.use(routes);
 // see home view 
-app.get('/homepage', (req,res) => {
+app.get('/homepage', ensureAuthenticated, (req,res) => {
     res.render('home', {title: 'Homepage', user: req.user})
 })
 

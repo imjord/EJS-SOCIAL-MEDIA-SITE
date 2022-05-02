@@ -4,16 +4,16 @@ const commentRoute = require('./CommentRoute/index');
 const userRoute = require('./UserRoute/index');
 const login = require('./login');
 const register = require('./register');
-const {ensureAuth, forwardAuth} = require('../config/auth');
+const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 const { logout } = require('../controllers/UserController');
 
-router.use('/api', postRoute);
-router.use('/api',  commentRoute);
-router.use('/api',userRoute);
+router.use('/api', ensureAuthenticated, postRoute);
+router.use('/api', ensureAuthenticated,  commentRoute);
+router.use('/api', ensureAuthenticated, userRoute);
 
 // login sign up
-router.use('/login', forwardAuth, login);
-router.use('/signup', forwardAuth, register)
+router.use('/login', forwardAuthenticated, login);
+router.use('/signup', forwardAuthenticated, register)
 router.get('/logout', logout);
 
 
