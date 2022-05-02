@@ -176,6 +176,11 @@ footer {
     margin-top: 20px;
 }
 
+#success {
+    background-color: rgba(142, 254, 152, 0.5);
+    
+}
+
 
 @media only screen and (max-width: 600px) {
     #landing-page {

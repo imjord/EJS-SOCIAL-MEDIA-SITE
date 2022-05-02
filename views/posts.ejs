@@ -1,17 +1,24 @@
 <%- include('./partials/head.ejs')  %> 
-    <% if(data.length <= 0) { %> 
-        <p> There are currently no posts. Go create one!</p>
-        <% } %> 
-    <% data.forEach(items => { %>
-        <ul id="post-ul">
-            <a class="single" href="posts/<%= items._id %> "> Details </a>
-            <li> <h3>Post Made by</h3> <%= items.username %>  </li> 
-            <li><h3>Post title</h3><%= items.title %> </li> 
-            <li> <h3>Post Message</h3><%= items.post %></li>   
+<div>
+    <%- include('./partials/message.ejs')  %>
+    <div>
+        <% if(data.length <= 0) { %> 
+            <p> There are currently no posts. Go create one!</p>
+            <% } %> 
+        <% data.forEach(items => { %>
+            <ul id="post-ul">
+                <a class="single" href="posts/<%= items._id %> "> Details </a>
+                <li> <h3>Post Made by</h3> <%= items.username %>  </li> 
+                <li><h3>Post title</h3><%= items.title %> </li> 
+                <li> <h3>Post Message</h3><%= items.post %></li>   
+                
+                <li><h5>Comments: <%= items.comments.length  %> </h5></li>
+            </ul> 
             
-            <li><h5>Comments: <%= items.comments.length  %> </h5></li>
-        </ul> 
-        
-    <% }) %> 
+        <% }) %> 
+    </div>
+    
+</div>
+   
 
  
