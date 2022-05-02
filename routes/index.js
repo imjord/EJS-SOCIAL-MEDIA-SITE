@@ -7,13 +7,13 @@ const register = require('./register');
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 const { logout } = require('../controllers/UserController');
 
-router.use('/api', ensureAuthenticated, postRoute);
-router.use('/api', ensureAuthenticated,  commentRoute);
-router.use('/api', ensureAuthenticated, userRoute);
+router.use('/api',  postRoute);
+router.use('/api', commentRoute);
+router.use('/api', userRoute);
 
 // login sign up
 router.use('/login', forwardAuthenticated, login);
-router.use('/signup', forwardAuthenticated, register)
+router.use('/signup',forwardAuthenticated,  register)
 router.get('/logout', logout);
 
 
