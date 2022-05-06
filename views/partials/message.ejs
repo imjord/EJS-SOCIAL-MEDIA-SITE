@@ -1,24 +1,27 @@
 
 <div id="errors">
   <% if(locals.errors){ %> <% errors.forEach(function(error) { %>
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      <%= error.msg %>
+    <div class="alert alert-dismissible alert-primary">
       
+      <strong>Oh snap!</strong> <a href="#" class="alert-link"><%= error.msg %></a> 
     </div>
     <% }); %> <% } %> <% if(success_msg != ''){ %>
-    <div id="success" class="alert alert-success alert-dismissible fade show" role="alert">
-      <%= success_msg %>
-      
-    </div>
+      <div class="alert alert-dismissible alert-success">
+        
+        <strong>Well done!</strong> <a href="#" class="alert-link"> <%= success_msg %></a>.
+      </div>
+    
     <% } %> <% if(error_msg != ''){ %>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <%= error_msg %>
-      
-    </div>
+      <div class="alert alert-dismissible alert-primary">
+        
+        <strong>Oh snap!</strong> <a href="#" class="alert-link"> <%= error_msg %></a> 
+      </div>
+    
     <% } %> <% if(error != ''){ %>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <%= error %>
-      
-    </div>
+      <div class="alert alert-dismissible alert-primary">
+        
+        <strong>Oh snap!</strong> <a href="#" class="alert-link">  <%= error %></a> 
+      </div>
+   
     <% } %>
 </div>
