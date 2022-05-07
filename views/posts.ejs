@@ -1,4 +1,8 @@
 <%- include('./partials/head.ejs')  %> 
+
+
+
+
 <div>
     <%- include('./partials/message.ejs')  %>
     <div>
@@ -6,14 +10,23 @@
             <p> There are currently no posts. Go create one!</p>
             <% } %> 
         <% data.forEach(items => { %>
-            <ul id="post-ul">
-                <a class="single" href="posts/<%= items._id %> "> Details </a>
+            <div class="card border-secondary mb-3" style="max-width: 20rem;">
+                <a class="single" href="posts/<%= items._id %> "> Discussion </a>
+                <div class="card-header">Post by: <%= items.username %>  </div>
+                <div class="card-body">
+                  <h4 class="card-title"><%= items.post %></h4>
+                  <p class="card-text"></p>
+                  <h5>Comments: <%= items.comments.length  %> </h5>
+                </div>
+              </div>
+            <!-- <ul id="post-ul">
+                <a class="single" href="posts/<%= items._id %> "> Discussion </a>
                 <li> <h3>Post Made by</h3> <%= items.username %>  </li> 
                 <li><h3>Post title</h3><%= items.title %> </li> 
                 <li> <h3>Post Message</h3><%= items.post %></li>   
                 
                 <li><h5>Comments: <%= items.comments.length  %> </h5></li>
-            </ul> 
+            </ul>  -->
             
         <% }) %> 
     </div>

@@ -1,15 +1,30 @@
 <%- include('./partials/head.ejs')  %> 
 <div>
-    <%- include('./partials/message.ejs')  %>
-    <form id="create-form" action="/api/posts" method="POST">
-        <label for="username">Username - </label>
-        <%= user.username  %>
-        <label for="title">Post title</label>
-        <input type="text" id="title" name="title">
-        <label for="post">Post Message</label>
-        <input type="text" id="post" name="post">
-        <button id="create-btn" type="submit">Submit</button>
+    <%- include('./partials/message.ejs')  %> 
+    <form action="/api/posts" method="POST">
+      <fieldset>
+        <legend>Create Posts</legend>
         
-    </form>
+        <div class="form-group row">
+          <div class="col-sm-10">
+        <div class="form-group">
+          <label for="username" class="form-label mt-4">Username</label>
+          <%= user.username  %>
+        </div>
+        <!-- <div class="form-group">
+          <label for="title" class="form-label mt-4">Post Title</label>
+          <input type="text" id="title" name="title" class="form-control"/>
+        </div> -->
+        <div class="form-group">
+          <label for="post" class="form-label mt-4">Post Message</label>
+          <input type="text" class="form-control" id="post" name="post" />
+         
+        </div>
+        <button type="submit" class="btn btn-primary">Post</button>
+        </div>
+        </div>
+        </fieldset>
+        </form>
+   
 </div>
 
