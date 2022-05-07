@@ -4,42 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="/css/style.css"/> -->
+    <link rel="stylesheet" href="/css/style.css"/>
     <link rel="icon" href="/css/icon.svg"/>
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
   
     <title>Our Friends</title>
 </head>
 <body>
-  <%- include('./partials/message.ejs')  %> 
-  <form action="/api/users" method="POST">
-    <fieldset>
-      <legend>Register</legend>
-      
-      <div class="form-group row">
-        <div class="col-sm-10">
-      <div class="form-group">
-        <label for="exampleInputEmail1" class="form-label mt-4">Username</label>
-        <input type="text" class="form-control" name="username" value="<%= typeof username != 'undefined' ? username : '' %>"/>
-      
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
-        <input type="email" class="form-control" name="email" value="<%= typeof email != 'undefined' ? email : '' %>"/>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
-        <input type="password" class="form-control" name="password" value="<%= typeof password != 'undefined' ? password : '' %>"/>
-        <small id="emailHelp" class="form-text text-muted">Your password is hashed so no one will know it</small>
-      </div>
-      <button type="submit" class="btn btn-primary">Create Account</button>
-      </div>
-      </div>
-      </fieldset>
-      </form>
-      
- 
+  <div class="form-dude">
+    <%- include('./partials/message.ejs')  %> 
+    <form action="/api/users" method="POST">
+      <fieldset>
+        <legend>Register</legend>
+        
+        <div class="form-group row">
+          <div class="col-sm-10">
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="form-label mt-4">Username</label>
+          <input type="text" class="form-control" name="username" value="<%= typeof username != 'undefined' ? username : '' %>"/>
+        
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
+          <input type="email" class="form-control" name="email" value="<%= typeof email != 'undefined' ? email : '' %>"/>
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
+          <input type="password" class="form-control" name="password" value="<%= typeof password != 'undefined' ? password : '' %>"/>
+          <small id="emailHelp" class="form-text text-muted">Your password is hashed so no one will know it</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Account</button>
+        </div>
+        </div>
+        </fieldset>
+        </form>
+        
+   
+  </div>
+  
  
 
  

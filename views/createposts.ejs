@@ -1,5 +1,5 @@
 <%- include('./partials/head.ejs')  %> 
-<div>
+<div class="create-dude">
     <%- include('./partials/message.ejs')  %> 
     <form action="/api/posts" method="POST">
       <fieldset>
@@ -17,10 +17,10 @@
         </div> -->
         <div class="form-group">
           <label for="post" class="form-label mt-4">Post Message</label>
-          <input type="text" class="form-control" id="post" name="post" />
+          <textarea style="resize: none;" type="text" class="form-control" id="post" name="post"></textarea>
          
         </div>
-        <button type="submit" class="btn btn-primary">Post</button>
+        <button type="submit" id="post-it" class="btn btn-primary">Post</button>
         </div>
         </div>
         </fieldset>

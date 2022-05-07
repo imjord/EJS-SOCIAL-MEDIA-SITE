@@ -3,7 +3,7 @@
 
 
 
-<div>
+<div class="posts-dude">
     <%- include('./partials/message.ejs')  %>
     <div>
         <% if(data.length <= 0) { %> 
@@ -11,13 +11,17 @@
             <% } %> 
         <% data.forEach(items => { %>
             <div class="card border-secondary mb-3" style="max-width: 20rem;">
-                <a class="single" href="posts/<%= items._id %> "> Discussion </a>
                 <div class="card-header">Post by: <%= items.username %>  </div>
                 <div class="card-body">
                   <h4 class="card-title"><%= items.post %></h4>
                   <p class="card-text"></p>
-                  <h5>Comments: <%= items.comments.length  %> </h5>
+                  <small>Comments: <%= items.comments.length  %> </small>
+                  
                 </div>
+                <div id="discuss">
+                    <a class="single"  href="posts/<%= items._id %> "><button type="button"  class="btn  btn-primary">Discussion</button></a>
+                </div>
+               
               </div>
             <!-- <ul id="post-ul">
                 <a class="single" href="posts/<%= items._id %> "> Discussion </a>

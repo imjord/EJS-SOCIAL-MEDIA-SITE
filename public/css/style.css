@@ -181,6 +181,53 @@ footer {
     
 }
 
+.form-dude {
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.create-dude {
+    display: flex;
+    margin-top: 50px;
+    
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.posts-dude {
+    display: flex;
+    margin-top: 50px;
+    
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
+#discuss {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 10px;
+}
+
+#post-it{
+    width: 100%;
+}
+
+#post {
+    height: 150px;
+}
+
+.border-post {
+    border: 10px solid  rgba(90, 200, 255, 0.7);
+    border-radius: 10px;
+}
 
 @media only screen and (max-width: 600px) {
     #landing-page {
