@@ -1,49 +1,72 @@
 <%- include('./partials/head.ejs')  %> 
-
-<div>
-    <h4><%= info.username  %> </h4>
-    <h4><%= info.title %> </h4>
-    <h4><%= info.post %> </h4>
-    <h4><%= info.createdAt %> </h4>
+<div class="border-post">
+    <div  href="#" class="list-group-item  flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">Post by: <%= info.username  %> </h5>
+          <small class="text-muted">Posted: <%= info.createdAt %> </small>
+        </div>
+        <p class="mb-1"><%= info.post %></p>
+        <!-- <small class="text-muted">Donec id elit non mi porta.</small> -->
+    </div>
+    </div>
+    <!-- <div>
+        <h4><%= info.username  %> </h4>
+        <h4><%= info.post %> </h4>
+        <h4><%= info.createdAt %> </h4>
+    </div> -->
 </div>
 
-
-
-<div class="comments-section">
-    <h3>Comments</h3>
+<div class="border-post">
     <form action="/api/comments/<%= info.id %>" method="POST">
-        <label for="writtenBy">Written by:</label>
-    <input type="text" id="writtenBy" name="writtenBy" value="<%=user.username%>" readonly></label>
-    <label for="commentBody">Comment:</label>
-    <input type="text" id="commentBody" name="commentBody">
-    <button>Submit</button>
-    </form>
-    <div id="fl">
-        <h4>Comments on Post</h4><h5><%= info.comments.length  %>  </h5>
-    </div>
-    <div id="comments">
-        <% if(info.comments.length > 0) { %> 
-            <div id="comment-singles">
-                
-           
-           <% info.comments.forEach(commentArray => { %> 
-           <div id="hehe">
-            <p> Written By: <%= commentArray.writtenBy  %> 
-            </p>
-            <p>
-                Comment: <%= commentArray.commentBody  %> 
-             </p>
+        <fieldset>
+          <legend>Comments</legend>
+          
+          <div class="form-group row">
+            <div class="col-sm-10">
+          <div class="form-group">
+            <label for="writtenBy" class="form-label mt-4">Written By:</label>
+            <input type="text" class="form-control" type="text" id="writtenBy" name="writtenBy" value="<%=user.username%>" readonly/>
+          
+          </div>
+          <div class="form-group">
+            <label for="commentBody" class="form-label mt-4">Comment:</label>
+            <input type="text" class="form-control" type="text" id="commentBody" name="commentBody"/>
+            <small id="emailHelp" class="form-text text-muted">Please refrain from inappropriate language:).</small>
             
-              <% }) %> 
-           </div> 
-            </div>
-            <% } else { %> 
-                <p>This post has no comments</p>
-                <% } %> 
-    </div>
-   
+          </div>
+          <button type="submit" class="btn btn-primary">Comment</button>
+          </div>
+          </div>
+          </fieldset>
+          </form>
+          <div id="fl">
+            <h4>Comments on Post</h4><h5><%= info.comments.length  %>  </h5>
+        </div>
+        <div id="comments">
+            <% if(info.comments.length > 0) { %> 
+                <div id="comment-singles">
+                    
+               
+               <% info.comments.forEach(commentArray => { %> 
+               <div id="hehe" class="border-post">
+                <p> Written By: <%= commentArray.writtenBy  %> 
+                </p>
+                <p>
+                    Comment: <%= commentArray.commentBody  %> 
+                 </p>
+                
+                  <% }) %> 
+               </div> 
+                </div>
+                <% } else { %> 
+                    <p>This post has no comments</p>
+                    <% } %> 
+        </div>
 </div>
-<a class="delete" data-doc="<%= info._id %>">Delete Post (w.i.p for user to be able to delete)</a>
+
+
+
+<!-- <a class="delete" data-doc="<%= info._id %>">Delete Post (w.i.p for user to be able to delete)</a> -->
 
 
 <script>
