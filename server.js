@@ -37,8 +37,8 @@ app.use(passport.session());
 // connect flash
 app.use(flash());
 
-
-
+// tet
+console.log();
 // Global flash variables
 app.use(function(req, res, next) {
     res.locals.success_msg = req.flash('success_msg');
